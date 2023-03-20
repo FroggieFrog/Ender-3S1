@@ -540,8 +540,8 @@
  * Multiple extruders can be assigned to the same pin in which case
  * the fan will turn on when any selected extruder is above the threshold.
  */
-//视新板子是用哪个管脚来接风扇，比如为PAx，则在Configuration_adv.h中定义#define E0_AUTO_FAN_PIN PAx即可。 
-//按新硬件原理图，假设用PC0接喉管风扇，改为#define E0_AUTO_FAN_PIN PC0，当喉管温度大于EXTRUDER_AUTO_FAN_TEMPERATURE时喉管风扇开启 --zy
+//视新板子是用哪个管脚来接风扇，比如为PAx，则在Configuration_adv.h中定义#define E0_AUTO_FAN_PIN PAx即可。 /Depending on which pin is used to connect the fan on the new board, for example for PAx, just define #define E0_AUTO_FAN_PIN PAx in Configuration_adv.h.
+//按新硬件原理图，假设用PC0接喉管风扇，改为#define E0_AUTO_FAN_PIN PC0，当喉管温度大于EXTRUDER_AUTO_FAN_TEMPERATURE时喉管风扇开启 --zy /According to the new hardware schematic, assuming that PC0 is used to connect the throat fan, change to #define E0_AUTO_FAN_PIN PC0, when the throat temperature is greater than EXTRUDER_AUTO_FAN_TEMPERATURE the throat fan turns on --zy
 #define E0_AUTO_FAN_PIN PC0
 #define E1_AUTO_FAN_PIN -1
 #define E2_AUTO_FAN_PIN -1
@@ -1314,7 +1314,7 @@
   //#define MEDIA_MENU_AT_TOP               // Force the media menu to be listed on the top of the main menu
 
   #define EVENT_GCODE_SD_ABORT            "G28 XY F3000" "\n" "M84" //"G28XY""\n""M84"      // G-code to run on SD Abort Print (e.g., "G28XY" or "G27")
-  
+
   // 激光回零/停止时避免激光照射到平台外
   #if ENABLED(ENDER_3S1_PRO) || ENABLED(ENDER_3S1)
     #define EVENT_GCODE_SD_ABORT_LASER      "G28 XY F3000\nG1 X0 Y10 F3000\nM84"
@@ -2359,7 +2359,7 @@
  *
  * Enable PARK_HEAD_ON_PAUSE to add the G-code M125 Pause and Park.
  */
-#define ADVANCED_PAUSE_FEATURE   
+#define ADVANCED_PAUSE_FEATURE
 #if ENABLED(ADVANCED_PAUSE_FEATURE)
   #define PAUSE_PARK_RETRACT_FEEDRATE         60  // (mm/s) Initial retract feedrate. (mm/s) 初始回抽进给率。
   #define PAUSE_PARK_RETRACT_LENGTH            2  // (mm) Initial retract.断料后第一次的回抽长度
@@ -3293,7 +3293,7 @@
 
     /**
      * Any M3 or G1/2/3/5 command with the 'I' parameter enables continuous inline power mode.
-     * 
+     *
      * e.g., 'M3 I' enables continuous inline power which is processed by the planner.
      * Power is stored in move blocks and applied when blocks are processed by the Stepper ISR.
      *
@@ -3303,8 +3303,8 @@
      * Feed rates are set by the F parameter of a move command e.g. G1 X0 Y10 F6000
      * Laser power would be calculated by bit shifting off 8 LSB's. In binary this is div 256.
      * The calculation gives us ocr values from 0 to 255, values over F65535 will be set as 255 .
-     * More refined power control such as compesation for accell/decell will be addressed in future releases. 
-     * 
+     * More refined power control such as compesation for accell/decell will be addressed in future releases.
+     *
      * M5 I clears inline mode and set power to 0, M5 sets the power output to 0 but leaves inline mode on.
      */
 

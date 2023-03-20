@@ -70,13 +70,13 @@
 
 
 // @section info
-/
+
 //  #define ENDER_3S1_PLUS
 #define ENDER_3S1_PRO
-  
-// 主控芯片
-#define USER_STM32F103  1
-// #define USER_STM32F401  1
+
+// 主控芯片 /Main control chip
+//#define USER_STM32F103  1
+#define USER_STM32F401  1
 
 
 #if ENABLED(ENDER_3S1_PRO)
@@ -93,7 +93,7 @@
       #define SHORT_BUILD_VERSION "2.0.8.24F4" // F401版本
 
     #endif
-    
+
   #endif
 
   // Author info of this build printed to the host during boot and M115
@@ -103,7 +103,7 @@
   #define SOFTVERSION       SHORT_BUILD_VERSION
   #define MACHINE_TYPE      "Ender-3 S1 Pro"
   #define FIRMWARE_VERSION  "2.0.8"
-  #define SCREEN_VERSION    "UI20" 
+  #define SCREEN_VERSION    "UI20"
   #define SCREEN_HW_VERSION "DWIN2021"
   #define HARDWARE_VERSION  "CR-FDM-v24S1_301"
   #define PRINT_SIZE        "220 * 220 * 270"
@@ -152,7 +152,7 @@
     #elif ENABLED(USER_STM32F401)
       #define SHORT_BUILD_VERSION "2.0.8.24F4" // F401版本
     #endif
-    
+
   #endif
 
   // Author info of this build printed to the host during boot and M115
@@ -162,7 +162,7 @@
   #define SOFTVERSION       SHORT_BUILD_VERSION
   #define MACHINE_TYPE      "Ender-3 S1"
   #define FIRMWARE_VERSION  "2.0.8"
-  #define SCREEN_VERSION    "UI20" 
+  #define SCREEN_VERSION    "UI20"
   #define SCREEN_HW_VERSION "DWIN2021"
   #define HARDWARE_VERSION  "CR-FDM-v24S1_301"
   #define PRINT_SIZE        "220 * 220 * 270"
@@ -237,7 +237,7 @@
  * Currently only supported for AVR, DUE, LPC1768/9 and STM32/STM32F1
  * :[-1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
- #define LCD_SERIAL_PORT 2 
+ #define LCD_SERIAL_PORT 2
  #define LCD_BAUDRATE 115200
 
 // Enable the Bluetooth serial interface on AT90USB devices
@@ -250,7 +250,7 @@
   #elif ENABLED(USER_STM32F401)
     #define MOTHERBOARD BOARD_CREALITY_S1_F401RC//MOTHERBOARD BOARD_CREALITY_S1//BOARD_CREALITY_S1_F401RC
   #endif
-  
+
 #endif
 
 #if ENABLED(ENDER_3S1_Pro)
@@ -1074,7 +1074,7 @@
  */
 /**
  *Z_MIN_PROBE_PIN
-
+*/
 //#define Z_MIN_PROBE_PIN 32 // Pin 32 is the RAMPS default
 
 /**
@@ -1083,7 +1083,7 @@
  * Allen Key Probes, Servo Probes, Z-Sled Probes, FIX_MOUNTED_PROBE, etc.
  * Activate one of these to use Auto Bed Leveling below.
  */
-/**
+
 
 /**
  * The "Manual Probe" provides a means to do "Auto" Bed Leveling without a probe.
@@ -1112,7 +1112,7 @@
     #define NOZZLE_AS_PROBE
 #else
     //#define NOZZLE_AS_PROBE
-#endif 
+#endif
 
 /**
  * Z Servo Probe, such as an endstop switch on a rotating arm.
@@ -1128,7 +1128,7 @@
  */
 /**
  *BLTouch 探头使用霍尔效应传感器并模拟伺服。
- */ 
+ */
 #if ENABLED(Z_AXIS_LIMIT_MODE)
   //#define BLTOUCH
 #else
@@ -1239,7 +1239,7 @@
 */
 // X and Y axis travel speed (mm/min) between probes
 #if ENABLED(ENDER_3S1_PLUS)
-  #define XY_PROBE_FEEDRATE (50*60) 
+  #define XY_PROBE_FEEDRATE (50*60)
 #else
   #define XY_PROBE_FEEDRATE (200*60)
 #endif
@@ -1327,7 +1327,7 @@
   //#define PAUSE_PROBE_DEPLOY_WHEN_TRIGGERED // For Manual Deploy Allenkey Probe
 #endif
 
-/** 
+/**
  * Enable one or more of the following if probing seems unreliable.
  * Heaters and/or fans can be disabled during probing to minimize electrical
  * noise. A delay can also be added to allow noise and vibration to settle.
@@ -1509,7 +1509,7 @@
   #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
   #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
 
-  #define FIL_RUNOUT_STATE     HIGH  //HIGH //      // Pin state indicating that filament is NOT present. 
+  #define FIL_RUNOUT_STATE     HIGH  //HIGH //      // Pin state indicating that filament is NOT present.
   #define FIL_RUNOUT_PULLUP               // Use internal pullup for filament runout pins.
   // #define FIL_RUNOUT_PULLDOWN           // Use internal pulldown for filament runout pins.
   //#define WATCH_ALL_RUNOUT_SENSORS      // Execute runout script on any triggering sensor, not only for the active extruder.
@@ -1626,11 +1626,11 @@
 #define RESTORE_LEVELING_AFTER_G28
 #endif
 
-// 辅助调平点
-#if ENABLED(ENDER_3S1_PRO) 
+// 辅助调平点 /Auxiliary leveling point
+#if ENABLED(ENDER_3S1_PRO)
   //                                     X0,Y0    X1,Y1   X2,Y2  X3,Y3    X4 Y4
   #define MANUALL_BED_LEVEING_5POSITION {110,110, 30,30, 190,30, 190,190, 30,190}
-#elif ENABLED(ENDER_3S1) 
+#elif ENABLED(ENDER_3S1)
   #define MANUALL_BED_LEVEING_5POSITION {110,110, 30,30, 190,30, 190,190, 30,190}
 #elif ENABLED(ENDER_3S1_PLUS)
   //                                     X0,Y0    X1,Y1   X2,Y2  X3,Y3    X4 Y4
@@ -1967,7 +1967,7 @@
 // Preheat Constants - Up to 5 are supported without changes
 //
 // ender-3s1 plus 为低温版本
-#if ENABLED(ENDER_3S1_PLUS) || ENABLED(ENDER_3S1) 
+#if ENABLED(ENDER_3S1_PLUS) || ENABLED(ENDER_3S1)
   #define PREHEAT_1_LABEL       "PLA"
   #define PREHEAT_1_TEMP_HOTEND 200
   #define PREHEAT_1_TEMP_BED     60
@@ -2131,7 +2131,7 @@
  *M75 -启动打印作业计时器
  *M76 -暂停打印作业计时器
  *M77 -停止打印作业计时器
- */ 
+ */
 #define PRINTJOB_TIMER_AUTOSTART
 
 /**
@@ -2157,7 +2157,7 @@
  *-总打印时间
  *
  *使用 M78 查看当前统计数据。
- */ 
+ */
 #define PRINTCOUNTER
 #if ENABLED(PRINTCOUNTER)
   #define PRINTCOUNTER_SAVE_INTERVAL 60 // (minutes) EEPROM save interval during print
@@ -2727,7 +2727,7 @@
 //#define ANYCUBIC_LCD_CHIRON
 #if EITHER(ANYCUBIC_LCD_I3MEGA, ANYCUBIC_LCD_CHIRON)
   #define LCD_SERIAL_PORT 3  // Default is 3 for Anycubic
- 
+
   //#define ANYCUBIC_LCD_DEBUG
 #endif
 
