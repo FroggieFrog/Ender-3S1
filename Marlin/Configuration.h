@@ -2892,6 +2892,9 @@
 // resistive touch screen
 #define RTS_AVAILABLE
 
+// uncomment, to show Creality logo animation at the startup
+//  #define SHOW_SLOW_CREALITY_LOGO_AT_STARTUP
+
 //
 // Touch Screen Settings
 //
