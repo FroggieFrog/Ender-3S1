@@ -66,14 +66,14 @@
 //
 //===========================================================================
 
-#define Z_AXIS_LIMIT_MODE 0 // 1 为Z轴限位开关  0 为 CRTouch
+#define Z_AXIS_LIMIT_MODE 0 // 1 for Z-axis limit switch  0 for CRTouch
 
 // @section info
 
 //  #define ENDER_3S1_PLUS
 #define ENDER_3S1_PRO
 
-// 主控芯片 /Main control chip
+// Main control chip
 // #define USER_STM32F103  1
 #define USER_STM32F401 1
 
@@ -84,11 +84,11 @@
  */
 #ifndef SHORT_BUILD_VERSION
 #if ENABLED(Z_AXIS_LIMIT_MODE)
-#define SHORT_BUILD_VERSION "2.0.8.24Z" // F103版本
+#define SHORT_BUILD_VERSION "2.0.8.24Z" // F103 Versions
 #elif ENABLED(USER_STM32F103)
-#define SHORT_BUILD_VERSION "2.0.8.24F1" // F103版本
+#define SHORT_BUILD_VERSION "2.0.8.24F1" // F103 Versions
 #elif ENABLED(USER_STM32F401)
-#define SHORT_BUILD_VERSION "2.0.8.24F4" // F401版本
+#define SHORT_BUILD_VERSION "2.0.8.24F4" // F401 Versions
 
 #endif
 
@@ -116,11 +116,11 @@
  */
 #ifndef SHORT_BUILD_VERSION
 #if ENABLED(Z_AXIS_LIMIT_MODE)
-#define SHORT_BUILD_VERSION "2.0.8.24Z" // F103版本
+#define SHORT_BUILD_VERSION "2.0.8.24Z" // F103 Versions
 #elif ENABLED(USER_STM32F103)
-#define SHORT_BUILD_VERSION "2.0.8.24F1" // F103版本
+#define SHORT_BUILD_VERSION "2.0.8.24F1" // F103 Versions
 #elif ENABLED(USER_STM32F401)
-#define SHORT_BUILD_VERSION "2.0.8.24F4" // F401版本
+#define SHORT_BUILD_VERSION "2.0.8.24F4" // F401 Versions
 #endif
 #endif
 
@@ -146,9 +146,9 @@
  */
 #ifndef SHORT_BUILD_VERSION
 #if ENABLED(USER_STM32F103)
-#define SHORT_BUILD_VERSION "2.0.8.24F1" // F103版本
+#define SHORT_BUILD_VERSION "2.0.8.24F1" // F103 Versions
 #elif ENABLED(USER_STM32F401)
-#define SHORT_BUILD_VERSION "2.0.8.24F4" // F401版本
+#define SHORT_BUILD_VERSION "2.0.8.24F4" // F401 Versions
 #endif
 
 #endif
@@ -800,7 +800,8 @@
 #define PREVENT_LENGTHY_EXTRUDE
 #define EXTRUDE_MAXLENGTH 1000
 /*
-调试上料时，控制最大挤出长度为1000mm，这个数值一般大于等于挤出机到喷头的耗材加载距离
+When commissioning the loading, control the maximum extrusion length of 1000mm,
+this value is generally greater than or equal to the extruder to the nozzle consumables loading distance
 */
 //===========================================================================
 //======================== Thermal Runaway Protection =======================
@@ -2065,11 +2066,11 @@
  *    P0  (Default) If Z is below park Z raise the nozzle.
  *    P1  Raise the nozzle always to Z-park height.
  *    P2  Raise the nozzle by Z-park amount, limited to Z_MAX_POS.
- 默认喷嘴停止位置（暂停一开喷嘴，防止烫坏模型）
+ Default nozzle stop position (pause an open nozzle to prevent scalding the model)
  */
 #define NOZZLE_PARK_FEATURE
 /*
-  设置移开速度
+  Set move away speed
 */
 #if ENABLED(NOZZLE_PARK_FEATURE)
 // Specify a park position as { X, Y, Z_raise }

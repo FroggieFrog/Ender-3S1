@@ -335,7 +335,7 @@
 #if HAS_CUTTER // 增加激光
 
   #define SELECT_LASER_WARNING_TIPS_VP      0x1381
-  #define SELECT_FDM_WARNING_TIPS_VP        0x1382  
+  #define SELECT_FDM_WARNING_TIPS_VP        0x1382
   // 打印警告界面
   #define PRINT_MOVE_AXIS_VP                0x1383
   #define PRINT_DIRECT_ENGRAV_VP            0x1384
@@ -354,7 +354,7 @@
   #define  FIRST_DEVICE_FDM                 0x138D
   #define  FIRST_DEVICE_LASER               0x138E
   #define  FOCUS_SET_FOCUS_TIPS             0x138F
-  
+
   #define SW_FOCUS_Z_VP                     0x2207
 //#define SW_FOCUS_Z_VP                     0x138E 占用
 
@@ -374,11 +374,11 @@ typedef struct DataBuf
 
 typedef struct CardRecord
 {
-  int recordcount;   //当前选中的文件序列
-  int Filesum;       //文件总数目
-  unsigned long addr[FileNum];   //迪文屏上显示对应文件名的地址
-  char Cardshowfilename[FileNum][FileNameLen];   //长文件名
-  char Cardfilename[FileNum][FileNameLen];       //短文件名
+  int recordcount;   //The currently selected file sequence
+  int Filesum;       //Total number of documents
+  unsigned long addr[FileNum];   //The address of the corresponding file name is displayed on the Divine screen
+  char Cardshowfilename[FileNum][FileNameLen];   //Long file name
+  char Cardfilename[FileNum][FileNameLen];       //Short file name
 }CRec;
 
 // extern CRec CardRecbuf;
@@ -409,7 +409,7 @@ class RTSSHOW
     #if HAS_CUTTER
       void RTS_HandleData_Laser(void);
       void RTS_SDcard_Stop_laser(void);
-    #endif   
+    #endif
 
     DB recdat;
     DB snddat;
@@ -489,13 +489,13 @@ enum PROC_COM
   ErrorKey              = 52,
   StartFileKey          = 53,
   SelectFileKey         = 54,
-  
+
   //新增激光
-  #if HAS_CUTTER 
+  #if HAS_CUTTER
     SwitchDeviceKey     = 55,
     PauseEngraveingKey  = 56,
     EngraveWarningKey   = 57,
-    AdjustFocusKey      = 58, 
+    AdjustFocusKey      = 58,
     SwAdjustFocusKey    = 59,
     LaserMoveAxis       = 60,
     FocusZAxisKey       = 61,
@@ -504,7 +504,7 @@ enum PROC_COM
 
 };
 
-const unsigned long Addrbuf[] = 
+const unsigned long Addrbuf[] =
 {
   0x1002,
   0x1004,
@@ -613,7 +613,7 @@ extern char error_sd_num;
 
 extern unsigned char Count_first;
 
-extern unsigned char Count_probe; 
+extern unsigned char Count_probe;
 
 extern float z_offset;
 
@@ -621,8 +621,8 @@ extern bool eeprom_save_flag;
 
 #define EEPROM_SAVE_LANGUAGE()      {if(eeprom_save_flag) { settings.save(); eeprom_save_flag = false; }}
 
-// extern bool flag_over_shutdown; 
-// extern bool flag_counter_printover_to_shutdown; 
+// extern bool flag_over_shutdown;
+// extern bool flag_counter_printover_to_shutdown;
 
 void Read_lcd_Register(unsigned char len, unsigned int addr);
 void Write_lcd_Register(unsigned int addr,unsigned char data);

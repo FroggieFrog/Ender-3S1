@@ -1889,7 +1889,7 @@
 #define BABYSTEP_INVERT_Z false // Change if Z babysteps should go the other way
 // #define BABYSTEP_MILLIMETER_UNITS       // Specify BABYSTEP_MULTIPLICATOR_(XY|Z) in mm instead of micro-steps
 #define BABYSTEP_MULTIPLICATOR_Z 40 // (steps or mm) Steps or millimeter distance for each Z babystep
-                                    // #define BABYSTEP_MULTIPLICATOR_XY 1       // (steps or mm) Steps or millimeter distance for each XY babystep
+// #define BABYSTEP_MULTIPLICATOR_XY 1       // (steps or mm) Steps or millimeter distance for each XY babystep
 
 // #define DOUBLECLICK_FOR_Z_BABYSTEPPING  // Double-click on the Status Screen for Z Babystepping.
 #if ENABLED(DOUBLECLICK_FOR_Z_BABYSTEPPING)
@@ -2414,13 +2414,13 @@
  */
 #define ADVANCED_PAUSE_FEATURE
 #if ENABLED(ADVANCED_PAUSE_FEATURE)
-#define PAUSE_PARK_RETRACT_FEEDRATE 60       // (mm/s) Initial retract feedrate. (mm/s) 初始回抽进给率。
-#define PAUSE_PARK_RETRACT_LENGTH 2          // (mm) Initial retract.断料后第一次的回抽长度
+#define PAUSE_PARK_RETRACT_FEEDRATE 60       // (mm/s) Initial retract feedrate. (mm/s) Initial pumping back feed rate.
+#define PAUSE_PARK_RETRACT_LENGTH 2          // (mm) Initial retract. The length of the first drawback after breaking the material
                                              // This short retract is done immediately, before parking the nozzle.
-                                             // 这个短暂的缩回是在停放喷嘴之前立即完成的。
-#define FILAMENT_CHANGE_UNLOAD_FEEDRATE 10   // (mm/s) Unload filament feedrate. This can be pretty fast.(mm/s) 卸载长丝进给率。这可能非常快。
-#define FILAMENT_CHANGE_UNLOAD_ACCEL 25      // (mm/s^2) Lower acceleration may allow a faster feedrate.(mm/s^2) 较低的加速度可能允许更快的进给率。
-#define FILAMENT_CHANGE_UNLOAD_LENGTH 100    // (mm) The length of filament for a complete unload.完全卸载的灯丝长度。
+                                             // his brief retraction is done immediately prior to parking the nozzle.
+#define FILAMENT_CHANGE_UNLOAD_FEEDRATE 10   // (mm/s) Unload filament feedrate. This can be pretty fast.(mm/s) Unload the filament feed rate. This can be very fast.
+#define FILAMENT_CHANGE_UNLOAD_ACCEL 25      // (mm/s^2) Lower acceleration may allow a faster feedrate.(mm/s^2) Lower acceleration may allow for faster feed rates.
+#define FILAMENT_CHANGE_UNLOAD_LENGTH 100    // (mm) The length of filament for a complete unload. Completely unloaded filament length.
                                              //   For Bowden, the full length of the tube and nozzle.
                                              //   For direct drive, the full length of the nozzle.
                                              //   Set to 0 for manual unloading.

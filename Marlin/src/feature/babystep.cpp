@@ -58,7 +58,7 @@ void Babystep::add_mm(const AxisEnum axis, const_float_t mm) {
   // {
   //   if((-distance_count)%4)distance_count -= 1;
   // }
-  // else 
+  // else
   // {
   //   if(distance_count%4)distance_count += 1;
   // }
@@ -75,7 +75,7 @@ void Babystep::add_steps(const AxisEnum axis, const int16_t distance) {
   TERN_(INTEGRATED_BABYSTEPPING, if (has_steps()) stepper.initiateBabystepping());
 }
 
-// 激光模式时， 偏移调用
+// When in laser mode, the offset call
 #if HAS_CUTTER
 
   void Babystep::add_mm_laser(const AxisEnum axis, const_float_t mm) {

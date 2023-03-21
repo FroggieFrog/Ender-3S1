@@ -50,31 +50,31 @@
 #endif
 
 #if ENABLED(RTS_AVAILABLE)
-/*******************************类定义*********************************/
+/*******************************Class Definition*********************************/
 RTSSHOW rtscheck;
 /********************************END***********************************/
 
-/*******************************外部声明*****************************/
+/*******************************External Statement*****************************/
 extern CardReader card;
 
 /**********************************END**********************************/
 
-/*******************************可选择性功能*****************************/
+/*******************************Optional Features*****************************/
 #if ENABLED(HAS_MENU_RESET_WIFI)
-// WIFI状态
+// WIFIStatus
 unsigned char WIFI_STATE = INITIAL;
 #endif
 
-// 错误状态
+// Error Status
 char errorway = 0;
 char errornum = 0;
 char home_errornum = 0;
 char error_sd_num = 0;
 
-// 开始打印状态标志位
+// Start printing status flag bit
 bool StartPrint_flag = false;
 
-// babystep偏移参数，Z轴偏移参数 /babystep offset parameters, Z-axis offset parameters
+// babystep offset parameters, Z-axis offset parameters
 #if ENABLED(BABYSTEPPING)
 float zprobe_zoffset;
 float last_zoffset = 0.0;
@@ -82,7 +82,7 @@ float last_zoffset = 0.0;
 
 int power_off_type_yes = 0;
 
-// 运动相关参数设置
+// Motion-related parameter settings
 const float manual_feedrate_mm_m[] = {50 * 60, 50 * 60, 4 * 60, 60};
 // const float manual_feedrate_mm_m[] = DEFAULT_MAX_FEEDRATE;
 constexpr float default_max_feedrate[] = DEFAULT_MAX_FEEDRATE;
@@ -90,58 +90,57 @@ constexpr float default_max_acceleration[] = DEFAULT_MAX_ACCELERATION;
 constexpr float default_max_jerk[] = {DEFAULT_XJERK, DEFAULT_YJERK, DEFAULT_ZJERK, DEFAULT_EJERK};
 constexpr float default_axis_steps_per_unit[] = DEFAULT_AXIS_STEPS_PER_UNIT;
 
-// 喷头默认PID
+// Printhead default PID
 float default_nozzle_ptemp = DEFAULT_Kp;
 float default_nozzle_itemp = DEFAULT_Ki;
 float default_nozzle_dtemp = DEFAULT_Kd;
 
-// 热床默认PID
+// Hotbed default PID
 float default_hotbed_ptemp = DEFAULT_bedKp;
 float default_hotbed_itemp = DEFAULT_bedKi;
 float default_hotbed_dtemp = DEFAULT_bedKd;
 
-// 打印进度条
+// Print progress bar
 uint8_t startprogress = 0;
-// 读取SD卡GCODE文件名的结构体参数
+// Read the structure parameters of the SD card GCODE file name
 CRec CardRecbuf;
 // float pause_e = 0;
-// SD卡打印是否暂停，true需要检测暂停，false已经暂停完成
+// SD card printing is suspended or not, true needs to detect suspension, false has been suspended to complete
 bool sdcard_pause_check = true;
-// 暂停的动作就是回到 X0,Y0处
+// The pause action is to go back to X0,Y0
 bool pause_action_flag = false;
 // bool print_preheat_check = false;
 // bool probe_offset_flag = false;
 
-// 更换耗材时的设定温度
+// Set temperature when replacing filament
 float ChangeFilamentTemp = 200;
 int heatway = 0;
 
-// 下一次更新数据的时间
+// Time of next data update
 millis_t next_rts_update_ms = 0;
 // millis_t next_shutdown_update_ms = 0;
 // unsigned int count_ms = 0;
 // unsigned long count_lcd_down = 0;
 // bool flag_lcd_down = false;
 
-// 上一次喷头的温度
+// Temperature of the last nozzle
 int last_target_temperature[4] = {0};
-// 上一次热床的温度
+// Temperature of the last hotbed
 int last_target_temperature_bed;
 
 char waitway = 0;
 
-// 当前的页面序列 /Current page sequence
+// Current page sequence
 int change_page_font = 1;
 // int recnum = 0;
-unsigned char Percentrecord = 0; // SD卡打印百分比
+unsigned char Percentrecord = 0; // SD card printing percentage
 // represents to update file list
-// SD卡文件列表更新，标志位
+// SD card file list update, flag bit
 bool CardUpdate = false;
 
-// 当前的语言标志位 /Current language flag bit
+// Current language flag bit
 uint8_t lang = 2;
 // represents SD-card status, true means SD is available, false means opposite.
-// 表示 SD 卡状态，true 表示 SD 可用，false 表示相反。
 bool lcd_sd_status;
 
 // char Checkfilenum = 0;
@@ -149,22 +148,21 @@ int FilenamesCount = 0;
 
 char cmdbuf[20] = {0};
 
-// 耗材加载的默认长度
+// Default length for filament loading
 float FilamentLOAD = 10;
 
-// 耗材卸载的默认长度
+// Default length for filament unloading
 float FilamentUnLOAD = 10;
 
-// 1 for 10mm, 2 for 1mm, 3 for 0.1mm
-// 移动轴的单位选择标志 1 代表 10mm，2 代表 1mm，3 代表 0.1mm
+// Unit selection mark for moving axis: 1 for 10mm, 2 for 1mm, 3 for 0.1mm
 unsigned char AxisUnitMode;
 
-// 移动轴的每个单位参数
+// Parameters for each unit of the moving axis
 float axis_unit = 10.0;
 // bool LEDStatus = true;
-// 更新迪文屏幕的数据变量时间间隔
+// Update the data variable time interval of the Diven screen
 int Update_Time_Value = 0;
-// 断电续打，迪文屏显示逻辑标志位
+// Power failure renewal, Dewan screen display logic flag bit
 bool PoweroffContinue = false;
 char commandbuf[30];
 
@@ -179,12 +177,12 @@ bool home_flag = false;
 // bool flag_over_shutdown = false;
 // bool flag_counter_printover_to_shutdown = false;
 
-// 保存暂停时喷头的温度
+// Save the temperature of the nozzle during the pause
 int temphot = 0;
-// 选中文件开始打印标志位
+// Check the file start print flag bit
 bool rts_start_print = false;
 
-// 辅助调平的点
+// Points for auxiliary leveling
 const int manual_level_5position[5][2] = MANUALL_BED_LEVEING_5POSITION;
 
 enum
@@ -198,7 +196,7 @@ uint8_t preheat_flag = PREHEAT_PLA; // 0=PLA， 1=ABS
 
 /*************************************END***************************************/
 
-// 以manual_feedrate_mm_m的默认设置速度，移动到current_position的位置
+// Move to the current_position at the default speed of manual_feedrate_mm_m
 inline void RTS_line_to_current(AxisEnum axis)
 {
   if (!planner.is_full())
@@ -207,7 +205,7 @@ inline void RTS_line_to_current(AxisEnum axis)
   }
 }
 
-// 设置发送和接收串口屏的帧头数据
+// Set the frame header data for sending and receiving serial screens
 RTSSHOW::RTSSHOW(void)
 {
   recdat.head[0] = snddat.head[0] = FHONE;
@@ -215,7 +213,7 @@ RTSSHOW::RTSSHOW(void)
   memset(databuf, 0, sizeof(databuf));
 }
 
-// SD卡的检测引脚，具有防抖功能
+// Detection pins for SD cards with anti-shake function
 bool RTSSHOW::RTS_SD_Detected(void)
 {
   static bool last;
@@ -251,7 +249,7 @@ bool RTSSHOW::RTS_SD_Detected(void)
   return state;
 }
 
-// 迪文屏初始化SD卡
+// Devon screen initialization SD card
 void RTSSHOW::RTS_SDCardInit(void)
 {
   if (RTS_SD_Detected())
@@ -261,22 +259,22 @@ void RTSSHOW::RTS_SDCardInit(void)
   }
   if (CardReader::flag.mounted)
   {
-    uint16_t fileCnt = card.get_num_Files(); // 获取SD卡中Gcode的总数
-    card.getWorkDirName();                   // 获取当前的SD卡目录，如果不是根文件目录则，返回上一级目录
+    uint16_t fileCnt = card.get_num_Files(); // Get the total number of Gcode in SD card
+    card.getWorkDirName();                   // Get the current SD card directory, if it is not the root directory, then return to the previous directory
     if (card.filename[0] != '/')
     {
       card.cdup();
     }
 
     int addrnum = 0;
-    int num = 0; // 当前SD卡的文件序列号
+    int num = 0; // File serial number of the current SD card
     for (uint16_t i = 0; (i < fileCnt) && (i < (MaxFileNumber + addrnum)); i++)
     {
-      card.selectFileByIndex(fileCnt - 1 - i);     // 返回对应序列号的SD卡文件的长文件名和短文件名
-      char *pointFilename = card.longFilename;     // 长文件名
-      int filenamelen = strlen(card.longFilename); // 长文件名的长度
+      card.selectFileByIndex(fileCnt - 1 - i);     // Returns the long file name and short file name of the SD card file corresponding to the serial number
+      char *pointFilename = card.longFilename;     // Long file name
+      int filenamelen = strlen(card.longFilename); // Length of long file names
       int j = 1;
-      // 轮询长文件名的整个长度，是否包含.gcode 或者 .GCODE 结尾的文件
+      // Poll the entire length of a long file name for files that end in .gcode or .GCODE
       while ((strncmp(&pointFilename[j], ".gcode", 6) && strncmp(&pointFilename[j], ".GCODE", 6)) && ((j++) < filenamelen))
         ;
       if (j >= filenamelen)
@@ -292,29 +290,29 @@ void RTSSHOW::RTS_SDCardInit(void)
         j = TEXTBYTELEN - 1;
       }
 
-      strncpy(CardRecbuf.Cardshowfilename[num], card.longFilename, j); // 复制长文件保存到CardRecbuf结构体变量中
+      strncpy(CardRecbuf.Cardshowfilename[num], card.longFilename, j); // Copy the long file and save it to the CardRecbuf structure variable
 
-      strcpy(CardRecbuf.Cardfilename[num], card.filename); // 复制短文件名并保存到CardRecbuf结构体变量中
+      strcpy(CardRecbuf.Cardfilename[num], card.filename); // Copy the short filename and save it to the CardRecbuf structure variable
       CardRecbuf.addr[num] = FILE1_TEXT_VP + (num * 20);
       RTS_SndData(CardRecbuf.Cardshowfilename[num], CardRecbuf.addr[num]);
       CardRecbuf.Filesum = (++num);
     }
-    // 清除剩下的文件名显示地址的数据
+    // Clear the data for the remaining filename display addresses
     for (int j = CardRecbuf.Filesum; j < MaxFileNumber; j++)
     {
       CardRecbuf.addr[j] = FILE1_TEXT_VP + (j * 20);
       RTS_SndData(0, CardRecbuf.addr[j]);
     }
-    // 清除打印主界面的文件名显示
+    // Clear the file name display on the main print screen
     for (int j = 0; j < 20; j++)
     {
       // clean print file
       RTS_SndData(0, PRINT_FILE_TEXT_VP + j);
     }
     // lcd_sd_status = IS_SD_INSERTED();
-    lcd_sd_status = RTS_SD_Detected(); // SD卡当前的状态
+    lcd_sd_status = RTS_SD_Detected(); // The current status of the SD card
   }
-  else // SD卡挂在失败
+  else // SD card hanging in failure
   {
     // clean filename Icon
     for (int j = 0; j < MaxFileNumber; j++)
@@ -422,12 +420,12 @@ void RTSSHOW::RTS_Init(void)
   last_zoffset = zprobe_zoffset = probe.offset.z;
   RTS_SndData(zprobe_zoffset * 100, AUTO_BED_LEVEL_ZOFFSET_VP);
 
-  // 显示语言选择界面图标
+  // Show language selection screen icon
   for (int i = 0; i < 9; i++)
   {
     RTS_SndData(0, LANGUAGE_CHINESE_TITLE_VP + i);
   }
-  // 选中当前的语言
+  // Check the current language
   RTS_SndData(1, LANGUAGE_CHINESE_TITLE_VP + (language_change_font - 1));
   languagedisplayUpdate();
   // delay(100);
@@ -556,7 +554,7 @@ void RTSSHOW::RTS_Init(void)
 
 int RTSSHOW::RTS_RecData(void)
 {
-  static int recnum = 0; // 当前接收的数据偏移
+  static int recnum = 0; // Current Received Data Offset
   while ((LCDSERIAL.available() > 0) && (recnum < SizeofDatabuf))
   {
     delay(1);
@@ -1019,12 +1017,12 @@ void RTSSHOW::RTS_HandleData(void)
       RTS_SndData(ExchangePageBase + 1, ExchangepageAddr);
       change_page_font = 1;
     }
-    else if (recdat.data[0] == 9) // 暂停/停止 /Pause/Stop
+    else if (recdat.data[0] == 9) // Pause/Stop
     {
       RTS_SndData(ExchangePageBase + 11, ExchangepageAddr);
       change_page_font = 11;
     }
-    else if (recdat.data[0] == 0x0A) // 继续/停止 /Continue/Stop
+    else if (recdat.data[0] == 0x0A) // Continue/Stop
     {
       RTS_SndData(ExchangePageBase + 13, ExchangepageAddr);
       change_page_font = 13;
@@ -1289,7 +1287,7 @@ void RTSSHOW::RTS_HandleData(void)
       else
       {
 #if ENABLED(FILAMENT_RUNOUT_SENSOR_DEBUG)
-        SERIAL_ECHOLNPAIR("\r\ncontinu run filament ", pause_menu_response);
+        SERIAL_ECHOLNPAIR("\r\ncontinue run filament ", pause_menu_response);
 #endif
         RTS_SndData(ExchangePageBase + 8, ExchangepageAddr);
         change_page_font = 8;
@@ -1484,9 +1482,9 @@ void RTSSHOW::RTS_HandleData(void)
     {
       RTS_SndData(MACHINE_TYPE, MACHINE_TYPE_ABOUT_TEXT_VP);
       RTS_SndData(FIRMWARE_VERSION, FIREWARE_VERSION_ABOUT_TEXT_VP);
-      // // 激光的版本已经在屏幕中写入UI版本号 /The version of the laser is already written in the screen with the UI version number
+      // // The version of the laser is already written in the screen with the UI version number
       // #if ENABLED(LASER_FEATURE)
-      //   // 20220223 屏幕版本改由屏幕工程设定 /Screen version changed to set by screen project
+      //   // 20220223 Screen version changed to set by screen project
       // #else
       //   RTS_SndData(SCREEN_VERSION, PRINTER_DISPLAY_VERSION_TEXT_VP);
       // #endif
@@ -1507,7 +1505,7 @@ void RTSSHOW::RTS_HandleData(void)
     else if (recdat.data[0] == 6)
     {
       queue.enqueue_now_P(PSTR("M84"));
-      queue.enqueue_now_P(PSTR("G92.9Z0")); // rock_20211224 解决人为下降Z轴，导致撞平台的问题。/Solve the problem of artificially dropping the Z-axis, resulting in hitting the platform.
+      queue.enqueue_now_P(PSTR("G92.9Z0")); // rock_20211224 Solve the problem of artificially dropping the Z-axis, resulting in hitting the platform.
       RTS_SndData(1, MOTOR_FREE_ICON_VP);
     }
     else if (recdat.data[0] == 7)
@@ -1593,7 +1591,7 @@ void RTSSHOW::RTS_HandleData(void)
       RTS_SndData(ExchangePageBase + 26, ExchangepageAddr);
       change_page_font = 26;
 
-      // 此处造成屏幕显示的位置与实际位置不符,注释掉 //20220310 zhangguanghua /This causes the screen to show the position does not match the actual position, comment out
+      // This causes the screen to show the position does not match the actual position, comment out //20220310 zhangguanghua
       // if((!axis_is_trusted(X_AXIS)) || (!axis_is_trusted(Y_AXIS))) //axis_is_trusted((AxisEnum)axis) if((!TEST(axis_known_position, X_AXIS)) || (!TEST(axis_known_position, Y_AXIS)))
       // {
       //   queue.enqueue_now_P(PSTR("G28"));
